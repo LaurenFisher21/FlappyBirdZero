@@ -16,7 +16,7 @@ end
 function Bird:update(dt)
     self.dy = self.dy + GRAVITY * dt --applying gravity to velocity
 
-    if love.keyboard.wasPressed('space') then
+    if love.keyboard.wasPressed('space') then --jumping
         self.dy = -5
     end
 
