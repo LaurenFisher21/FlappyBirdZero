@@ -34,6 +34,8 @@ function love.load()
         fullscreen = false,
         resizable = true
     })
+
+    love.keyboard.keysPressed = {} --taking in keypresses in an table format (is this good?)
 end
 
 function love.resize(w, h)
@@ -41,8 +43,18 @@ function love.resize(w, h)
 end
 
 function love.keypressed(key)
+    love.keyboard.keysPressed[key] = true
+
     if key == 'escape' then
         love.event.quit()
+    end
+end
+
+function love.keyboard.wasPressed(key)
+    if love.keyboard.keysPressed[key] then
+        return true
+    else
+        return false
     end
 end
 
@@ -54,6 +66,8 @@ function love.update(dt)
         % VIRTUAL_WIDTH
 
     Bird:update(dt)
+
+    love.keyboard.keysPressed = {} --resets the table to have nothing in it
 end
 
 function love.draw()
