@@ -78,9 +78,12 @@ function love.update(dt)
     groundScroll = (groundScroll + GROUND_SCROLL_SPEED * dt)
         % VIRTUAL_WIDTH
 
+    math.randomseed(os.time())
+    secondsPerGap = math.random(2, 5)
+
     spawnTimer = spawnTimer + dt
 
-    if spawnTimer > 2 then 
+    if spawnTimer > secondsPerGap then 
         local y = math.max(-PIPE_HEIGHT + 10,
             math.min(lastY + math.random(-20, 20), VIRTUAL_HEIGHT - 90 - PIPE_HEIGHT))
         lastY = y

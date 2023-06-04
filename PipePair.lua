@@ -1,8 +1,12 @@
 PipePair = Class{}
 
-local GAP_HEIGHT = 90
+math.randomseed(os.time())
 
 function PipePair:init(y)
+    local NICE_GAP = math.random(90, 120)
+
+    local GAP_HEIGHT = NICE_GAP
+
     self.x = VIRTUAL_WIDTH + 32
 
     self.y = y 
